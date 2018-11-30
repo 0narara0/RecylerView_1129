@@ -11,32 +11,42 @@ import java.util.ArrayList;
 
 class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    ArrayList<ItemData> arrayList;
+    ArrayList<ItemData> arrayList = new ArrayList<>();
 
     public MyAdapter(ArrayList<ItemData> arrayList) {
         this.arrayList = arrayList;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
+
             TextView mname;
             TextView mnum;
+
+        public MyViewHolder(@NonNull View itemView,ArrayList<ItemData> arrayList) {
+            super(itemView);
+            arrayList = arrayList;
+        }
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             mname=itemView.findViewById(R.id.textName);
             mnum=itemView.findViewById(R.id.textNumber);
         }
+
     }
 
 
 
     @NonNull
     @Override
+    //onCreaterViewHolder 메인에 아이템 연결
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view=LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview, viewGroup,false);
         return new MyViewHolder(view);
     }
 
     @Override
+    //아이템에 data를 넣어줌
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         MyViewHolder myViewHolder=(MyViewHolder) viewHolder;
         myViewHolder.mname.setText(arrayList.get(i).getName());
@@ -45,6 +55,7 @@ class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public int getItemCount() {
+
         return arrayList.size();
     }
 }

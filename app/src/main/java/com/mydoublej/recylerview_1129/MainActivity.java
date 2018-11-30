@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView=findViewById(R.id.recyclerView);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setHasFixedSize(true);
+
 
         ArrayList<ItemData> arrayList = new ArrayList<>();
         arrayList.add(new ItemData("aaaa","1111"));
